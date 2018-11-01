@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
 from rest_framework import serializers
-from apps.persona.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from apps.persona.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES, Persona,Evento
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -13,6 +13,17 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ('url', 'name')
 
+class PersonaSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Persona
+        fields = ('nombre', 'apellido','fecha_nacimiento')
+
+class EventoSerializer(serializers.HyperlinkedModelSerializer):
+    personas = serializers.SlugRelatedField(
+       many=True, read_only=False, slug_field='nombre',required=False, allow_null=True, queryset=Persona.objects.all())
+    class Meta:
+        model = Evento
+        fields = ('lugar', 'fecha','motivo','personas')
 
 class SnippetSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)

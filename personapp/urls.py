@@ -27,12 +27,20 @@ router.register(r'snippet', views.SnipppetViewSet)
 router.register(r'persona', views.PersonaViewSet)
 router.register(r'evento', views.EventoViewSet)
 
+#documentacion con swager
+from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
+schema_view = get_schema_view(title='Users API', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
+
+
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
+
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('apps/', include('apps.persona.urls')),
+    path('docs/', schema_view,name="schema_view")
 ]
 

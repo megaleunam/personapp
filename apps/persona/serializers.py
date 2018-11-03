@@ -16,7 +16,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class PersonaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Persona
-        fields = ('nombre', 'apellido','fecha_nacimiento')
+        fields = ('pk','nombre', 'apellido','fecha_nacimiento')
 
 class EventoSerializer(serializers.HyperlinkedModelSerializer):
     personas = serializers.SlugRelatedField(

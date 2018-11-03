@@ -22,15 +22,14 @@ from apps.persona import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
-router.register(r'snippet', views.SnipppetViewSet)
+router.register(r'rol', views.GroupViewSet)
 router.register(r'persona', views.PersonaViewSet)
 router.register(r'evento', views.EventoViewSet)
 
 #documentacion con swager
 from rest_framework.schemas import get_schema_view
 from rest_framework_swagger.renderers import SwaggerUIRenderer, OpenAPIRenderer
-schema_view = get_schema_view(title='Users API', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
+schema_view = get_schema_view(title='Persona API', renderer_classes=[OpenAPIRenderer, SwaggerUIRenderer])
 
 
 # Wire up our API using automatic URL routing.

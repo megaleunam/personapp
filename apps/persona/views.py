@@ -13,15 +13,38 @@ from rest_framework.response import Response
 from apps.persona.models import Snippet,Persona,Evento
 from apps.persona.serializers import SnippetSerializer
 
+"""
+title: 
+Endpoint para usuarios
+"""
 class UserViewSet(viewsets.ModelViewSet):
-    
+    """
+    retrieve:
+    Return the given user.
+
+    list:
+    Return a list of all the existing users.
+
+    create:
+    Create a new user instance.
+
+    put: 
+    actualiza los datos del usuario
+
+    description:
+    Entidad de Usuario
+
+    update:
+    Actualización del Usuario
+        
+    """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
 
 class GroupViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows roles to be viewed or edited.
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
@@ -35,14 +58,42 @@ class SnipppetViewSet(viewsets.ModelViewSet):
 
 class PersonaViewSet(viewsets.ModelViewSet):
     """
-    API endpoint para Agregar y editar Personas al sistema.
+    Cigar resource.
+    ---
+    retrieve:
+    Retorna un registro de Persona .
+
+    list:
+    Retorna una lista de todas las personas Existentes.
+
+    create:
+    Create una nueva instancia de Persona.
+
+    update:
+    Actualización del Usuario
     """
     queryset = Persona.objects.all()
     serializer_class = PersonaSerializer
 
 class EventoViewSet(viewsets.ModelViewSet):
     """
-    API endpoint para Agregar listar y ver Eventos.
+    Recurso de Evento.
+    ---
+    retrieve:
+    Retorna un registro de Evento .
+
+    list:
+    Retorna una lista de todas los Eventos Existentes.
+
+    create:
+    Create una nueva instancia de Evento.
+
+    update:
+    Actualización del Evento
+
+    delete:
+    Elimina un Evento.
+    
     """
     queryset = Evento.objects.all()
     serializer_class = EventoSerializer
@@ -73,7 +124,7 @@ class SnippetDetail(APIView):
             return Snippet.objects.get(pk=pk)
         except Snippet.DoesNotExist:
             raise Http404
-
+    
     def get(self, request, pk, format=None):
         snippet = self.get_object(pk)
         serializer = SnippetSerializer(snippet)

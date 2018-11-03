@@ -127,3 +127,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+#settings de la documentacion
+SWAGGER_SETTINGS = {
+    'SHOW_REQUEST_HEADERS': True,
+    'SUPPORTED_SUBMIT_METHODS': [
+        'get',
+        'post',
+        'put',
+        'delete'
+    ],
+    'base_path':'http://67.205.189.174:7000/docs',
+    'info': {
+        'contact': 'manuel.marino03@gmail.com',
+        'description': 'esta es una app. '
+        'or on irc.freenode.net, #swagger. '
+        'For this sample, you can use the api key '
+        '"special-key" to test '
+        'the authorization filters',
+        'license': 'Apache 2.0',
+        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        'termsOfServiceUrl': 'http://helloreverb.com/terms/',
+        'title': 'App PAra la Gestión de Personal',
+    }
+
+}

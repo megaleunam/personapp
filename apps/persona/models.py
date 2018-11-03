@@ -24,7 +24,7 @@ class Persona(models.Model):
     apellido = models.CharField(max_length=100, blank=True, default='')
     telefono = models.CharField(max_length=100, blank=True, default='') # models.TextField()
     email = models.BooleanField(default=False)
-    fecha_nacimiento = models.DateTimeField()
+    fecha_nacimiento = models.DateField()
     #evento  = models.ForeignKey(Evento, related_name='personas', on_delete=models.CASCADE) 
 
     class Meta:
@@ -35,6 +35,9 @@ class Persona(models.Model):
 
     def __unicode__(self):
         return '%s: %s' % (self.nombre, self.apellido)
+
+    def get_absolute_url(self):
+        return "/persona/%i/" % self.id
 
 class Evento(models.Model):
     motivo  =  models.CharField(max_length=100, blank=True, default='') # models.TextField()

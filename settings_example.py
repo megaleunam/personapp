@@ -23,9 +23,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&ee844lndxg*xekm(-x4&6&xx#a3$trvbsb$8($=_sf3^3of55'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+     '67.205.189.174'
+]
 
 
 # Application definition
@@ -71,7 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'personapp.wsgi.application'
-
+#ASGI_APPLICATION = 'personapp.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
@@ -112,9 +116,9 @@ REST_FRAMEWORK = {
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Caracas'
 
 USE_I18N = True
 
@@ -127,28 +131,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-#settings de la documentacion
-SWAGGER_SETTINGS = {
-    'SHOW_REQUEST_HEADERS': True,
-    'SUPPORTED_SUBMIT_METHODS': [
-        'get',
-        'post',
-        'put',
-        'delete'
-    ],
-    'base_path':'http://67.205.189.174:7000/docs',
-    'info': {
-        'contact': 'manuel.marino03@gmail.com',
-        'description': 'esta es una app. '
-        'or on irc.freenode.net, #swagger. '
-        'For this sample, you can use the api key '
-        '"special-key" to test '
-        'the authorization filters',
-        'license': 'Apache 2.0',
-        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
-        'termsOfServiceUrl': 'http://helloreverb.com/terms/',
-        'title': 'App PAra la Gestión de Personal',
-    }
-
-}
+STATIC_ROOT = "/applications/personapp/static"
